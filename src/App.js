@@ -1,36 +1,26 @@
 import './App.css';
 import ButtonAppBar from './components/ButtonAppBar';
 import * as React from 'react';
-import CityCard from './components/CityCard';
+import NewsCard from './components/NewsCard';
 import axios from "axios";
 import { useState, useEffect} from "react";
 import Grid from '@mui/material/Grid';
 
 function App() {
-  const token = "b41e25882385ee402f115680cb550c54"
 
-  const [getCities, setCities] = useState([]);
-  const [cityNames, setcityNames] = useState([]);
   const [isLoading, setLoading] = useState(true);
-  const username = "default" //Modificar aqui username
-  useEffect(() => {
-    axios //Axios para Backend
-    .get(`https://morning-temple-71197.herokuapp.com/api/user/${username}/`)
-    .then((response) =>
-    {
-      console.log(response.data);
-      setcityNames(response.data.cities);
-      let promises = response.data.cities.map((city) => {
-        return axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${token}`).then((response)=>response.data)
-      });
+  const [newsList, setNews] = useState([]);
 
-      Promise.all(promises).then((lista) => {
-        console.log(lista)
-        setLoading(false);
-        setCities(lista);
-      });
-    });
-  },[]);
+  useEffect(() => {
+    axios
+    .get(`https://newsapi.org/v2/top-headlines?country=us&pageSize=5&apiKey=91265bf8c2434cf5809447b50b8f4e2b`)
+    .then((response)=> {
+      console.log(response.data)
+      setNews(response.data.articles)
+      setLoading(false);
+    })
+  }, []);
+
 
   if (isLoading) {
     return <div className="cityContainer">Loading...</div>;
@@ -39,7 +29,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <ButtonAppBar cityNames={cityNames} username={username}/>
+        <ButtonAppBar/>
       </header>
       <Grid
         container
@@ -51,15 +41,10 @@ function App() {
 
 
       >
-        {getCities.map((city) => (
-          <CityCard key={`city__${city.id}`} name={city.name} username={username} image={city.weather[0].icon}
-          lat={city.coord.lat} lon={city.coord.lon}>
-            {city.main.temp-273.15}
-            {city.main.temp_max-273.15}
-            {city.main.temp_min-273.15}
-            {city.main.humidity}
-            {city.weather[0].description}
-          </CityCard>
+        {newsList.map((news) => (
+          <NewsCard key={`news__${news.title}`} title={news.title} author={news.author} description={news.description} url={news.url } image={news.urlToImage}>
+            
+          </NewsCard>
         ))}
       </Grid>
     </div>

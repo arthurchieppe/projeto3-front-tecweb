@@ -52,7 +52,7 @@ export default function ButtonAppBar(props) {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{backgroundColor: " #336A8C"}}>
+      <AppBar position="static" sx={{backgroundColor: " #ad741f"}}>
         <Toolbar sx={{
           display: 'flex',
           flexDirection: 'row',
@@ -74,10 +74,10 @@ export default function ButtonAppBar(props) {
               maxWidth: { xs: 350, md: 250 },
               }}
               alt="Logo"
-              src="/weather-icon.png"
+              src="/coffee.png"
               />
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Weather App
+              Your Morning Coffee
             </Typography>
           </Box>
             <Box sx={{width: 500,
