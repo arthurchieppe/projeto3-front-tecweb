@@ -1,2 +1,9 @@
-# projeto3-front-tecweb
-Frontent Projeto 3 TecWeb
+# Projeto 3 - Tecnologias Web
+
+### Integrantes:
+- Arthur Gomes Chieppe
+- Luiza Valezim Augusto Pinto
+
+### Sobre:
+
+### Funcionalidades:
