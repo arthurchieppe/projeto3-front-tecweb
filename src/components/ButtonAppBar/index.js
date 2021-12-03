@@ -36,8 +36,6 @@ export default function ButtonAppBar(props) {
       .then((response) => {
         const lsCities = response.data.cities;
 
-
-
       console.log("aaa");
       console.log(lsCities);
       lsCities.push(city);
@@ -81,13 +79,12 @@ const AddButton = styled(Button) (({ theme }) => ({
     <div className="header">
 
         <div className="title"> 
-          <img alt="Logo" src="./coffee.png"/>
           <h1> Your Morning Coffee</h1>
         </div>
 
         <div className="add">
           <div className="textField"> 
-            <TextField sx={{margin: 1, input: {color: "white"}}} required id="task-input" label="What is your task?" variant="standard" fullWidth={true}/>
+            <TextField sx={{margin: 1, input: {color: "white"}}} id="task-input" label="What is your task?" variant="standard" fullWidth={true}/>
             <TextField sx={{margin: 1, input: {color: "white"}}} id="duedate-input" label="When is the due date?" variant="standard" fullWidth={true}/>
           </div>
           <AddButton onClick={
