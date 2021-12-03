@@ -7,9 +7,11 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import axios from "axios";
 import { useRef } from 'react';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import { styled } from '@mui/material/styles';
+import './index.css';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-
-// https://mui.com/pt/components/app-bar/
 
 export default function ButtonAppBar(props) {
   const token = "b41e25882385ee402f115680cb550c54";
@@ -17,7 +19,6 @@ export default function ButtonAppBar(props) {
 
   const valueRef = useRef('');
 
-  //https://stackoverflow.com/questions/29791721/how-get-data-from-material-ui-textfield-dropdownmenu-components
   const sendValue = () => {
     let city = valueRef.current.value;
     //Primeiro dar get para ver se existe:
@@ -50,50 +51,50 @@ export default function ButtonAppBar(props) {
   })
 }
 
+const AddButton = styled(Button) (({ theme }) => ({
+  color: theme.palette.getContrastText("#C5481B"),
+  backgroundColor: "#C5481B",
+  fontSize: 15,
+  padding: 10,
+  margin: 3,
+  fontFamily: [
+    '-apple-system',
+    'BlinkMacSystemFont',
+    'Rubik',
+    '"Segoe UI"',
+    'Roboto',
+    '"Helvetica Neue"',
+    'Arial',
+    'sans-serif',
+    '"Apple Color Emoji"',
+    '"Segoe UI Emoji"',
+    '"Segoe UI Symbol"',
+  ].join(','),
+  fontweight: "bold",
+  '&:hover': {
+    backgroundColor: "#E56A3E",
+  },
+}));
+
+
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{backgroundColor: " #ad741f"}}>
-        <Toolbar sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignContent: 'center'
-        }}>
-          <Box sx={{
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center'
-          }}>
-            <Box
-              component="img"
-              sx={{
-              height: 60,
-              // width: auto,
-              margin: 1,
-              maxHeight: { xs: 233, md: 167 },
-              maxWidth: { xs: 350, md: 250 },
-              }}
-              alt="Logo"
-              src="/coffee.png"
-              />
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Your Morning Coffee
-            </Typography>
-          </Box>
-            <Box sx={{width: 500,
-            display: "flex",
-            flexDirection: "row",
-            }}>
+    <div className="header">
 
+        <div className="title"> 
+          <img alt="Logo" src="./coffee.png"/>
+          <h1> Your Morning Coffee</h1>
+        </div>
 
-            <TextField fullWidth={true} id="filled-basic" label="Type a city..." variant="filled" className="citySearch" inputRef={valueRef}/>
-            <Button color="inherit" onClick={
-              sendValue}>
-              Add
-              </Button>
-              </Box>
-        </Toolbar>
-      </AppBar>
-    </Box>
+        <div className="add">
+          <div className="textField"> 
+            <TextField sx={{margin: 1, input: {color: "white"}}} required id="task-input" label="What is your task?" variant="standard" fullWidth={true}/>
+            <TextField sx={{margin: 1, input: {color: "white"}}} id="duedate-input" label="When is the due date?" variant="standard" fullWidth={true}/>
+          </div>
+          <AddButton onClick={
+            sendValue}>
+            Add
+          </AddButton>
+        </div>
+    </div>
   );
 }

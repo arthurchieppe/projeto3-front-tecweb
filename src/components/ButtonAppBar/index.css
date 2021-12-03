@@ -7,3 +7,42 @@
     background-color: #000;
     color: green;
 }
+
+h1 {
+    font-size: 3rem;
+    color: white;
+}
+
+.title {
+    display:flex;
+    flex-direction: row;
+}
+
+img {
+    height: 1rem;
+    width: 1rem;
+}
+
+.header {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #D34D1D;
+    height: 6rem;
+    box-shadow: 0 1rem 10rem rgb(211 77 29 / 10%), 0rem 1rem 3rem rgb(211 77 29 / 50%);
+}
+
+.add {
+    display: flex;
+    justify-content:  center;
+    align-items: center;
+    margin-right: 4.2rem;
+}
+
+.textField {
+    margin:1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

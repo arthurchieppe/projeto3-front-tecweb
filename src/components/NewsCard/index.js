@@ -11,8 +11,6 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Link from '@mui/material/Link';
-// import axios from "axios";
-// import { useState, useEffect} from "react";
 
 
 const ExpandMore = styled((props) => {
@@ -26,27 +24,12 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-// https://mui.com/components/cards/
 export default function NewsCard(props) {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-
-
-  //https://stackoverflow.com/questions/32589197/how-can-i-capitalize-the-first-letter-of-each-word-in-a-string-using-javascript
-//   function titleCase(str) {
-//     var splitStr = str.toLowerCase().split(' ');
-//     for (var i = 0; i < splitStr.length; i++) {
-//         // You do not need to check if i is larger than splitStr length, as your for does that for you
-//         // Assign it back to the array
-//         splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
-//     }
-//     // Directly return the joined string
-//     return splitStr.join(' ');
-//  }
-
 
   return (
     <Card sx={{ maxWidth: 345 ,margin: 2 }}>
