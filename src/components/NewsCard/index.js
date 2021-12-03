@@ -46,7 +46,7 @@ export default function NewsCard(props) {
         component="img"
         height="194"
         image={props.image}
-        alt="Image not available :("
+        alt="Image not provided by news API :("
       />
       <CardContent>
         <Typography variant="h6" color="text.secondary" sx={{ mt: 4, mb: 2 }}>

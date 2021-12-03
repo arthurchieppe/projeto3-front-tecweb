@@ -14,7 +14,9 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Checkbox from '@mui/material/Checkbox';
+// import Checkbox from '@mui/material/Checkbox';
+import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined';
+import IconButton from '@mui/material/IconButton';
 
 function createData(task, date) { return { task, date }; }
 
@@ -63,7 +65,13 @@ function App() {
     .then((response)=> {
       console.log(response.data)
       setNews(response.data.articles)
-      setLoading(false);
+      axios
+      .get('http://127.0.0.1:8000/api/todo/')
+      .then((response) => {
+        console.log(response.data);
+        setLoading(false);
+      })
+      
     })
   }, []);
 
@@ -115,7 +123,9 @@ function App() {
                       <StyledTableCell align="right">{row.date}</StyledTableCell>
                       <StyledTableCell align="right"> 
                         <ThemeProvider theme={innerTheme}>
-                          <Checkbox />
+                          <IconButton aria-label="done">
+                            <CheckCircleOutlinedIcon/>
+                          </IconButton>
                         </ThemeProvider>
                       </StyledTableCell>
                     </StyledTableRow>

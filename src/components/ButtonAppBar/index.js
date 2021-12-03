@@ -16,38 +16,16 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 export default function ButtonAppBar(props) {
   const token = "b41e25882385ee402f115680cb550c54";
   const username = props.username;
+  const descriptionRef = useRef('');
+  const dueDateRef = useRef('');
 
-  const valueRef = useRef('');
-
-  const sendValue = () => {
-    let city = valueRef.current.value;
-    //Primeiro dar get para ver se existe:
+  function sendValue() {
+    let description = String(descriptionRef.current.value);
+    let dueDate = String(dueDateRef.current.value);
     axios
-    .get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${token}`)
-    .then((response) => {
-      if (response.data.code === "404") {
-        return; //Caso cidade nao exista, nao faca nada
-      }
-      else {
-        city = response.data.name
-      }
-      axios
-      .get(`https://morning-temple-71197.herokuapp.com/api/user/${username}/`)
-      .then((response) => {
-        const lsCities = response.data.cities;
-
-      console.log("aaa");
-      console.log(lsCities);
-      lsCities.push(city);
-      axios
-      .post(`https://morning-temple-71197.herokuapp.com/api/user/${username}/`, {
-        "cities": lsCities
-    })
-    .then((response) => window.location.reload())
+    .post('http://127.0.0.1:8000/api/todo/', {"description": description, "dueDate": dueDate})
+    .then((response) => window.location.reload());
   }
-  );
-  })
-}
 
 const AddButton = styled(Button) (({ theme }) => ({
   color: theme.palette.getContrastText("#C5481B"),
@@ -84,8 +62,8 @@ const AddButton = styled(Button) (({ theme }) => ({
 
         <div className="add">
           <div className="textField"> 
-            <TextField sx={{margin: 1, input: {color: "white"}}} id="task-input" label="What is your task?" variant="standard" fullWidth={true}/>
-            <TextField sx={{margin: 1, input: {color: "white"}}} id="duedate-input" label="When is the due date?" variant="standard" fullWidth={true}/>
+            <TextField sx={{margin: 1, input: {color: "white"}}} id="task-input" label="What is your task?" variant="standard" fullWidth={true} inputRef={descriptionRef}/>
+            <TextField sx={{margin: 1, input: {color: "white"}}} id="duedate-input" label="When is the due date?" variant="standard" fullWidth={true} inputRef={dueDateRef}/>
           </div>
           <AddButton onClick={
             sendValue}>
