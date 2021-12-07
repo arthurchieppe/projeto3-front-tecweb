@@ -15,7 +15,7 @@ export default function ButtonAppBar(props) {
     let description = String(descriptionRef.current.value);
     let dueDate = String(dueDateRef.current.value);
     axios
-    .post('http://127.0.0.1:8000/api/todo/', {"description": description, "dueDate": dueDate})
+    .post('https://ancient-cove-96144.herokuapp.com/api/todo/', {"description": description, "dueDate": dueDate})
     .then((response) => window.location.reload());
   }
 

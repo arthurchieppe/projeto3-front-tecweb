@@ -47,7 +47,7 @@ const innerTheme = createTheme({
 function deleteTask(id) {
   console.log(id);
   axios
-  .delete(`http://127.0.0.1:8000/api/todo/delete/${id}`)
+  .delete(`https://ancient-cove-96144.herokuapp.com/api/todo/delete/${id}`)
   .then(window.location.reload())
 }
 
@@ -64,7 +64,7 @@ function App() {
       console.log(response.data)
       setNews(response.data.articles)
       axios
-      .get('http://127.0.0.1:8000/api/todo/')
+      .get('https://ancient-cove-96144.herokuapp.com/api/todo/')
       .then((response) => {
         console.log(response.data);
         setTodo(response.data); 
