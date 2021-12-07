@@ -55,6 +55,13 @@ const innerTheme = createTheme({
   },
 });
 
+function deleteTask(id) {
+  console.log(id);
+  axios
+  .delete(`http://127.0.0.1:8000/api/todo/delete/${id}`)
+  .then(window.location.reload())
+}
+
 function App() {
   
   const [isLoading, setLoading] = useState(true);
@@ -115,6 +122,7 @@ function App() {
                   <TableRow>
                     <StyledTableCell bgcolor = "#D34D1D" align="left">My Tasks</StyledTableCell>
                     <StyledTableCell align="right">Due Date&nbsp;</StyledTableCell>
+                    <StyledTableCell align="right">Done?&nbsp;</StyledTableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -126,7 +134,7 @@ function App() {
                       <StyledTableCell align="right">{row.dueDate}</StyledTableCell>
                       <StyledTableCell align="right"> 
                         <ThemeProvider theme={innerTheme}>
-                          <IconButton aria-label="done">
+                          <IconButton aria-label="done" id={row.id} value={row.id} onClick={() => deleteTask(row.id)}>
                             <CheckCircleOutlinedIcon/>
                           </IconButton>
                         </ThemeProvider>
