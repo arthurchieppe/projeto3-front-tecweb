@@ -14,19 +14,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-// import Checkbox from '@mui/material/Checkbox';
 import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined';
 import IconButton from '@mui/material/IconButton';
-import { SubdirectoryArrowLeftSharp } from '@material-ui/icons';
-
-// function createData(task, date) { return { task, date }; }
-
-// const rows = [
-//   createData('Fazer projeto 3 TecWeb', "08-12-2021"),
-//   createData('Sugestão de Estudos 14-15 Eletromag', "02-12-2021"),
-//   createData('Ver a nota de Camadas', "04-12-2021"),
-//   createData('Assistir a aula 14 de Modcon', "06-12-2021")
-// ];
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
