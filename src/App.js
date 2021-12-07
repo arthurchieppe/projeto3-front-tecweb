@@ -17,15 +17,16 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 // import Checkbox from '@mui/material/Checkbox';
 import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined';
 import IconButton from '@mui/material/IconButton';
+import { SubdirectoryArrowLeftSharp } from '@material-ui/icons';
 
-function createData(task, date) { return { task, date }; }
+// function createData(task, date) { return { task, date }; }
 
-const rows = [
-  createData('Fazer projeto 3 TecWeb', "08-12-2021"),
-  createData('Sugestão de Estudos 14-15 Eletromag', "02-12-2021"),
-  createData('Ver a nota de Camadas', "04-12-2021"),
-  createData('Assistir a aula 14 de Modcon', "06-12-2021")
-];
+// const rows = [
+//   createData('Fazer projeto 3 TecWeb', "08-12-2021"),
+//   createData('Sugestão de Estudos 14-15 Eletromag', "02-12-2021"),
+//   createData('Ver a nota de Camadas', "04-12-2021"),
+//   createData('Assistir a aula 14 de Modcon', "06-12-2021")
+// ];
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -55,9 +56,10 @@ const innerTheme = createTheme({
 });
 
 function App() {
-
+  
   const [isLoading, setLoading] = useState(true);
   const [newsList, setNews] = useState([]);
+  const [todoRows, setTodo] = useState([]);
 
   useEffect(() => {
     axios
@@ -69,6 +71,7 @@ function App() {
       .get('http://127.0.0.1:8000/api/todo/')
       .then((response) => {
         console.log(response.data);
+        setTodo(response.data); 
         setLoading(false);
       })
       
@@ -115,12 +118,12 @@ function App() {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {rows.map((row) => (
-                    <StyledTableRow key={row.task}>
+                  {todoRows.map((row) => (
+                    <StyledTableRow key={`task__${row.description}`}>
                       <StyledTableCell component="th" scope="row">
-                        {row.task}
+                        {row.description}
                       </StyledTableCell>
-                      <StyledTableCell align="right">{row.date}</StyledTableCell>
+                      <StyledTableCell align="right">{row.dueDate}</StyledTableCell>
                       <StyledTableCell align="right"> 
                         <ThemeProvider theme={innerTheme}>
                           <IconButton aria-label="done">
