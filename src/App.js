@@ -88,13 +88,15 @@ function App() {
       <div className="body">
 
           <div className="news">
+            <h2> News </h2>
+            <div className="api">
               <Grid
                 container
                 direction="row"
                 justifyContent="space-around"
                 alignItems="flex-start"
                 flexWrap="wrap"
-                padding={10}
+                padding={3}
               >
                 {newsList.map((news) => (
                   <NewsCard key={`news__${news.title}`} title={news.title} author={news.author} description={news.description} url={news.url } image={news.urlToImage}>
@@ -102,6 +104,7 @@ function App() {
                   </NewsCard>
                 ))}
               </Grid>
+            </div>
           </div>
 
           <div className="to-do">

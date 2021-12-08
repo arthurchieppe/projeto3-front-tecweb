@@ -19,8 +19,7 @@ code {
 
 .news {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
   width: 65%;
 }
 
@@ -29,4 +28,9 @@ code {
   justify-content: center;
   width: 35%;
   margin: 2rem;
+}
+
+h2 {
+  font-size: 5rem;
+  margin: 5rem 0 1rem 0;
 }
