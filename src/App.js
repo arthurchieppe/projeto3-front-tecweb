@@ -59,10 +59,10 @@ function App() {
 
   useEffect(() => {
     axios
-    .get(`https://newsapi.org/v2/top-headlines?country=us&pageSize=5&apiKey=91265bf8c2434cf5809447b50b8f4e2b`)
+    .get(`https://api.newscatcherapi.com/v2/latest_headlines?countries=US&page_size=6`, {headers: {'x-api-key':'r7--9orKjjE5_lu-rqVq_5wQrC5fMj0IA8q-Nj3mOzU'}})
     .then((response)=> {
-      console.log(response.data)
-      setNews(response.data.articles)
+      console.log(response.data.articles);
+      setNews(response.data.articles);
       axios
       .get('https://ancient-cove-96144.herokuapp.com/api/todo/')
       .then((response) => {
@@ -88,20 +88,23 @@ function App() {
       <div className="body">
 
           <div className="news">
+            <h2> News </h2>
+            <div className="api">
               <Grid
                 container
                 direction="row"
                 justifyContent="space-around"
                 alignItems="flex-start"
                 flexWrap="wrap"
-                padding={10}
+                padding={3}
               >
                 {newsList.map((news) => (
-                  <NewsCard key={`news__${news.title}`} title={news.title} author={news.author} description={news.description} url={news.url } image={news.urlToImage}>
+                  <NewsCard key={`news__${news.title}`} title={news.title} author={news.author} description={news.summary} url={news.link} image={news.media}>
                     
                   </NewsCard>
                 ))}
               </Grid>
+            </div>
           </div>
 
           <div className="to-do">
