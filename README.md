@@ -23,4 +23,5 @@ O nosso site permite que o usuário tenha um to-do list, em que possa adicionar 
 ![alt text](https://github.com/arthurchieppe/projeto3-front-tecweb/blob/main/diagrama.png?raw=true)
 
 ### Link do Heroku do site:
-https://guarded-basin-45156.herokuapp.com/
+Frontend: https://guarded-basin-45156.herokuapp.com/
+Backend: https://ancient-cove-96144.herokuapp.com/
