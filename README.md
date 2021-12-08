@@ -8,8 +8,16 @@
 O nosso site permite que o usuário tenha um to-do list, em que possa adicionar e retirar tarefas, junto com um sistema integrado das notícias mais relevantes.
 
 ### Funcionalidades:
-- To-do List
-- Chamada de uma API para as notícias
+- Implementar uma lista de tarefas interativa (GET, SET e DELETE)
+- Chamar uma API para as notícias
+
+### Cronograma:
+- [x] Definir uma API de notícias para ser implementada 
+- [x] Fazer o back-end da lista de tarefas
+- [x] Fazer o front-end da lista de tarefas (utilizando o MUI)
+- [x] Chamar a API de notícias escolhida
+- [x] Fazer o front-end das notícias
+- [x] Subir para o Heroku    
 
 ### Link do Heroku do site:
 https://guarded-basin-45156.herokuapp.com/
