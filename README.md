@@ -19,5 +19,8 @@ O nosso site permite que o usuário tenha um to-do list, em que possa adicionar 
 - [x] Fazer o front-end das notícias
 - [x] Subir para o Heroku    
 
+### Diagrama
+![alt text](https://github.com/arthurchieppe/projeto3-front-tecweb/blob/main/diagrama.png?raw=true)
+
 ### Link do Heroku do site:
 https://guarded-basin-45156.herokuapp.com/
