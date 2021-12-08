@@ -59,10 +59,10 @@ function App() {
 
   useEffect(() => {
     axios
-    .get(`https://newsapi.org/v2/top-headlines?country=us&pageSize=5&apiKey=91265bf8c2434cf5809447b50b8f4e2b`)
+    .get(`http://api.mediastack.com/v1/news?access_key=8dfbfb8b6824dddd77e305f81e0063d6&sources=en&limit=6`)
     .then((response)=> {
-      console.log(response.data)
-      setNews(response.data.articles)
+      console.log(response.data.data)
+      setNews(response.data.data)
       axios
       .get('https://ancient-cove-96144.herokuapp.com/api/todo/')
       .then((response) => {
@@ -99,7 +99,7 @@ function App() {
                 padding={3}
               >
                 {newsList.map((news) => (
-                  <NewsCard key={`news__${news.title}`} title={news.title} author={news.author} description={news.description} url={news.url } image={news.urlToImage}>
+                  <NewsCard key={`news__${news.title}`} title={news.title} author={news.author} description={news.description} url={news.url } image={news.image}>
                     
                   </NewsCard>
                 ))}
