@@ -59,7 +59,7 @@ function App() {
 
   useEffect(() => {
     axios
-    .get(`http://api.mediastack.com/v1/news?access_key=8dfbfb8b6824dddd77e305f81e0063d6&sources=en&limit=6`)
+    .get(`https://api.mediastack.com/v1/news?access_key=8dfbfb8b6824dddd77e305f81e0063d6&sources=en&limit=6`)
     .then((response)=> {
       console.log(response.data.data)
       setNews(response.data.data)
