@@ -59,10 +59,10 @@ function App() {
 
   useEffect(() => {
     axios
-    .get(`https://api.mediastack.com/v1/news?access_key=8dfbfb8b6824dddd77e305f81e0063d6&sources=en&limit=6`)
+    .get(`https://api.newscatcherapi.com/v2/latest_headlines?countries=US&page_size=6`, {headers: {'x-api-key':'r7--9orKjjE5_lu-rqVq_5wQrC5fMj0IA8q-Nj3mOzU'}})
     .then((response)=> {
-      console.log(response.data.data)
-      setNews(response.data.data)
+      console.log(response.data.articles);
+      setNews(response.data.articles);
       axios
       .get('https://ancient-cove-96144.herokuapp.com/api/todo/')
       .then((response) => {
@@ -99,7 +99,7 @@ function App() {
                 padding={3}
               >
                 {newsList.map((news) => (
-                  <NewsCard key={`news__${news.title}`} title={news.title} author={news.author} description={news.description} url={news.url } image={news.image}>
+                  <NewsCard key={`news__${news.title}`} title={news.title} author={news.author} description={news.summary} url={news.link} image={news.media}>
                     
                   </NewsCard>
                 ))}
